@@ -164,7 +164,7 @@ require('lazy').setup({
 
   {
     'EdenEast/nightfox.nvim',
-    priority = 1,
+    priority = 2,
     config = function()
       require('nightfox').setup({
         options = {
@@ -176,17 +176,30 @@ require('lazy').setup({
   },
 
   {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1,
+    config = function()
+      require('catppuccin').setup({
+        flavor = 'mocha',
+        transparent_background = true
+      })
+      vim.cmd.colorscheme 'catppuccin'
+    end
+  },
+
+  {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = false,
         theme = 'duskfox',
+        icons_enabled = true,
         component_separators = { left = '', right = ''},
         -- component_separators = '|',
         section_separators = { left = '', right = ''},
-        section_separators = '',
+        -- section_separators = '',
       },
     },
   },
