@@ -43,6 +43,7 @@ P.S. You can delete this when you're done too. It's your config now :)
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+vim.o.cmdheight = 0
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    https://github.com/folke/lazy.nvim
@@ -162,14 +163,29 @@ require('lazy').setup({
   },
 
   {
+    'EdenEast/nightfox.nvim',
+    priority = 1,
+    config = function()
+      require('nightfox').setup({
+        options = {
+          transparent = true
+        }
+      })
+      vim.cmd.colorscheme 'duskfox'
+    end
+  },
+
+  {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
-        component_separators = '|',
+        theme = 'duskfox',
+        component_separators = { left = '', right = ''},
+        -- component_separators = '|',
+        section_separators = { left = '', right = ''},
         section_separators = '',
       },
     },
